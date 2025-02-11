@@ -24,9 +24,56 @@ using (HttpClient client = new HttpClient())
     }
     catch (WebException ex)
     {
-        Console.WriteLine("error in code: " + ex.Message);
+        Console.WriteLine("error in http request: " + ex.Message);
     }
-    catch (Exception ex) { 
-    
+    catch (Exception ex) {
+        Console.WriteLine("error in other code: " + ex.Message);
     }
+}
+
+string questionUrl = "http://localhost:3000/api/questions/26723467";
+
+using (HttpClient client = new HttpClient())
+{
+    try
+    {
+
+        Question question = await client.GetFromJsonAsync<Question>(questionUrl);
+
+        Console.WriteLine(question.Title);
+    }
+    catch (WebException ex)
+    {
+        Console.WriteLine("error in http request: " + ex.Message);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("error in other code: " + ex.Message);
+    }
+
+}
+
+string questionsUrl = "http://localhost:3000/api/questions";
+
+using (HttpClient client = new HttpClient())
+{
+    try
+    {
+
+        IEnumerable<Question> questions = await client.GetFromJsonAsync<IEnumerable<Question>>(questionsUrl);
+
+        foreach(Question question in questions)
+        {
+            Console.WriteLine(question.Title);
+        }
+    }
+    catch (WebException ex)
+    {
+        Console.WriteLine("error in http request: " + ex.Message);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("error in other code: " + ex.Message);
+    }
+
 }

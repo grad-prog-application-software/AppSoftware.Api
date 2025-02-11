@@ -7,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace AppSoftware.Api.Core
 {
-    public class LongWait
-    {
-        [JsonPropertyName("message")]
-        public string Message { get; set; }
-    }
     public class Joke
     {
         [JsonPropertyName("id")]
