@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using AppSoftware.Api.Console;
+
 using AppSoftware.Api.Core;
 
 //using Newtonsoft.Json;
